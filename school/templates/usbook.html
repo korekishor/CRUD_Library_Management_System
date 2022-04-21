@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="text-center alert alert-info">ADD NEW records of BOOK</h4>
+
+            <form action="" method="POST">
+                <table>
+                    <tr>
+                        <td>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" class="btn btn-success" value="Add student">
+            </form>
+<!--            <form action="{% url 'hire' %}" method="get"><br>-->
+
+<!--                <input type="submit" class="btn btn-success" value="issu book">-->
+<!--            </form>-->
+
+        </div>
+
+        <div class="col-sm-7 offset-1">
+            <h4 class="text-center alert alert-info">Showing student information</h4>
+<!--            {% if book %}-->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <!--      <th scope="col">Id</th>-->
+                    <th scope="col">student_name</th>
+                    <th scope="col">book_Name</th>
+                    <th scope="col">book_id</th>
+                    <th scope="col">issue_date</th>
+                    <th scope="col">due</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for b in book %}
+                <tr>
+                    <!--      <th scope="row">{{b.id}}</th>-->
+                    <td><b>{{b.student_name}}</b></td>
+                    <td><b>{{b.book_name}}</b></td>
+                    <td><b>{{b.book_id}}</b></td>
+                    <td><b>{{b.issue_date}}</b></td>
+                    <td><b>{{b.due}}</b></td>
+                    <td>
+                        <a href="{% url 'updatedata' b.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <!--            Deleting data-->
+                        <form action="{% url 'deletedata' b.id %}" method="POST" class="d-inline">{% csrf_token %}
+                            <input type="submit" class="btn btn-danger" value="Delete">
+
+                        </form>
+                    </td>
+                </tr>
+<!--                {% endfor %}-->
+                </tbody>
+            </table>
+
+            {% else %}
+            <h4 class="text-center alert alert-warning">No data </h4>
+            {% endif %}
+        </div>
+
+    </div>
+</center>
+{% endblock content %}
+
+
+
+

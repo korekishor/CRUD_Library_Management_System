@@ -1,0 +1,11 @@
+ 1 > go in the dierctory AdminLmsCRUDsignup\school
+ 2 > run cammand -- python manage.py runserver
+ 3 > run cammand -- python manage.py makemigrations
+ 4 > run cammand -- python manage.py migrate
+ 5 > run cammand -- python manage.py createsuperuser
+ 6 > after open web app if user is admin click on i am admin else click on i am student 
+ 7 > if admin enter super user admin login name and passworrd 
+ 8 > after -- create library admin account useremail and  passworrd  
+ 9 > click on signin your account enter useradmin email and passworrd
+10 > admin can do crud(create,read,update,delete) records of books
+

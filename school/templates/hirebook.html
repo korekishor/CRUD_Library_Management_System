@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hared book </title>
+</head>
+<center>
+    <body>
+    <form action="{% url 'hire' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="student_name"><h3>student_name</h3> :</label><br>
+            <input type="text" class="form-control" id=" student_name" name="student_name">
+        </div>
+
+        <div class="form-group">
+            <label for="book_name"><h3>book_name </h3> :</label><br>
+            <input type="text" class="form-control" id="book_name" name="book_name">
+        </div>
+
+        <div class="form-group">
+            <label for="book_id"><h3>book_id </h3> :</label><br>
+            <input type="text" class="form-control" id="book_id" name="book_id">
+        </div>
+
+        <div class="form-group">
+            <label for="hire_date"><h3>hire_date </h3> :</label><br>
+            <input type="text" class="form-control" id="hire_date" name="hire_date">
+        </div>
+
+        <div class="form-group">
+            <label for="issu_date"><h3>issu_date </h3> :</label><br>
+            <input type="text" class="form-control" id="issu_date" name="issu_date">
+        </div>
+
+        <div class="form-group">
+            <label for="due"><h3>due </h3> :</label><br>
+            <input type="text" class="form-control" id="due" name="due">
+        </div>
+        <br>
+
+        <input type="submit" class="btn btn-success" value="submit">
+        <div class="col-sm-7 offset-1">
+    </form>
+    <br><br>
+    <table border="12" style="color:pue" style="color: red">
+        <tr>
+            <th>student name</th>
+            <th>book_name</th>
+            <th>book_id</th>
+            <th>hire_date</th>
+            <th>issu_date</th>
+            <th>due</th>
+            <th>action</th>
+        </tr>
+        {% for h in hbook %}
+        <tr>
+            <td>{{h.student_name}}</td>
+            <td>{{h.book_name}}</td>
+            <td>{{h.book_id}}</td>
+            <td>{{h.hire_date}}</td>
+            <td>{{h.issu_date}}</td>
+            <td>{{h.due}}</td>
+            <td>
+     <form action="{% url '/hdeletedata' h.id %}" method="POST" class="d-inline">{% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div>
+    </body>
+</center>
+</html>
+{% endblock content %}
