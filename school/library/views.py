@@ -1,3 +1,4 @@
+
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect
@@ -6,7 +7,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import bookregisteration
 from .models import data, Record, hirebook
-from . import models
+
 
 
 # Create your views here.
@@ -110,11 +111,15 @@ def login1(request):
         try:
             e = Record.objects.get(email=email)
             p = Record.objects.get(password=passw)
+
             if e == p:
                 return HttpResponseRedirect('add.html')
+            else:
+                return render(request, "login1.html")
+
         except:
             return render(request, "login1.html", {'msg': 'invalid credential !!!'})
-            # return HttpResponseRedirect('login1.html')
+
     else:
         return render(request, "login1.html")
 

@@ -14,5 +14,5 @@ class recordadmin(admin.ModelAdmin):
 
 @admin.register(hirebook)
 class hirebookAdmin(admin.ModelAdmin):
-    list_display = ['id','student_name','book_name','book_id','hire_date','issu_date','due']
+    list_display = ['id','student_name','book_name','book_id','hire_date','issu_date','due','due2']
 

@@ -57,6 +57,7 @@
             <th>issu_date</th>
             <th>due</th>
             <th>action</th>
+            <th>due2</th>
         </tr>
         {% for h in hbook %}
         <tr>
@@ -66,6 +67,7 @@
             <td>{{h.hire_date}}</td>
             <td>{{h.issu_date}}</td>
             <td>{{h.due}}</td>
+            <td>{{h.due2}}</td>
             <td>
      <form action="{% url '/hdeletedata' h.id %}" method="POST" class="d-inline">{% csrf_token %}
                     <input type="submit" class="btn btn-danger" value="Delete">

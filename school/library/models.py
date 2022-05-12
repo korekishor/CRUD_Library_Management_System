@@ -16,10 +16,13 @@ class Record(models.Model):
     dob = models.CharField(max_length=30)
 
 class hirebook(models.Model):
-    student_name=models.CharField(max_length=150)
+    student_name=models.CharField(max_length=150 )
     book_name=models.CharField(max_length=100)
-    book_id=models.IntegerField()
+    book_id=models.IntegerField(default=0)
     hire_date=models.CharField(max_length=100)
     issu_date=models.DateField(max_length=100)
     due=models.IntegerField()
+    due2=models.DateField(default=datetime.date.today)
 
+
+    
